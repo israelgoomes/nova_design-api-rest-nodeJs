@@ -12,8 +12,9 @@ const projetoModel = new schema({
     cidade: {type: String, required: true, index: true},
     tituloProjeto: {trim: true, required: true, index: true, type: String },
     descricaoProjeto: {type: String, required: true},
+    preco: {type: Number},
     foto: {type: String},
-    status: {type: Boolean, required: true},
+    status: {type: Boolean, required: true, default: true},
     data: {type: Date, default: new Date()}
 
 }, {versionkey: false})

@@ -25,11 +25,29 @@ projetoController.prototype.getById = async (req, res) => {
 projetoController.prototype.post = async (req, res) => {
   let _ValidationContract = new validation();
 
+  _ValidationContract.isRequired(req.body.nomeCliente, 'Digite o nome do cliente');
+  _ValidationContract.isRequired(req.body.relefone, 'Digite um número de telefone');
+  _ValidationContract.isRequired(req.body.rua, 'Digite a rua');
+  _ValidationContract.isRequired(req.body.bairro, 'Digite o bairro');
+  _ValidationContract.isRequired(req.body.cidade, 'Digite a cidade');
+  _ValidationContract.isRequired(req.body.tituloProjeto, 'Digite o titulo do projeto');
+  _ValidationContract.isRequired(req.body.descricaoProjeto, 'Escreva uma breve descrição do projeto');
+
+
+
  ctrlBase.post(_repo, _ValidationContract, req, res);
 };
 
 projetoController.prototype.put = async (req, res) => {
   let _ValidationContract = new validation();
+
+  _ValidationContract.isRequired(req.body.nomeCliente, 'Digite o nome do cliente');
+  _ValidationContract.isRequired(req.body.relefone, 'Digite um número de telefone');
+  _ValidationContract.isRequired(req.body.rua, 'Digite a rua');
+  _ValidationContract.isRequired(req.body.bairro, 'Digite o bairro');
+  _ValidationContract.isRequired(req.body.cidade, 'Digite a cidade');
+  _ValidationContract.isRequired(req.body.tituloProjeto, 'Digite o titulo do projeto');
+  _ValidationContract.isRequired(req.body.descricaoProjeto, 'Escreva uma breve descrição do projeto');
 
  ctrlBase.put(_repo, _ValidationContract, res, res);
 };
