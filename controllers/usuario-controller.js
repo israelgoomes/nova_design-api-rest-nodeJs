@@ -78,7 +78,7 @@ usuarioController.prototype.autenticar = async (req, res) => {
   _validationContrat.isEmail(req.body.email, "Email inválido!");
   _validationContrat.isRequired(req.body.senha, "Informe sua senha.");
 
-  if (!_validationContrat.isValid) {
+  if (!_validationContrat.isValid()) {
     res
       .status(400)
       .send({

@@ -20,11 +20,11 @@ class projetoDAO {
    }
 
    async create(data){ 
-      return this._base.create(data);
+      return await this._base.create(data);
     }
 
    async update(id, data){ 
-        return this._base.update(id, data);         
+        return await this._base.update(id, data);         
 }
 
    async delete(id){ 

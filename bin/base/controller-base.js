@@ -24,17 +24,13 @@ exports.getById = async (repository, req, res) => {
   }
 };
 
-exports.post = async (repository, validalidationContract, req, res) => {
+exports.post = async(repository, validalidationContract, req, res) => {
   try {
     let data = req.body;
-    if (!validalidationContract) {
-      res
-        .status(400)
-        .send({
+    if (!validalidationContract.isValid()) {
+      res.status(400).send({
           message: "Existem dados inválidos na requisiçao",
-          validation: validalidationContract.error()
-        })
-        .end();
+          validation: validalidationContract.errors()}).end();
       return;
     }
 
@@ -50,19 +46,16 @@ exports.put = async (repository, validalidationContract, req, res) => {
   try {
     let id = req.params.id;
     let data = req.body;
+
     if (!validalidationContract) {
-      res
-        .status(400)
-        .send({
+      res.status(400).send({
           message: "Existem dados inválidos na requisição",
-          validation: validalidationContract.error()
-        })
-        .end();
+          validation: validalidationContract.errors()}).end();
       return;
     }
 
     let resultado = await repository.update(id, data);
-    res.status(201).send(resutlado);
+    res.status(201).send(resultado);
   } catch (err) {
     console.log("post com erro, motivo: ", err);
     res.status(400).send({ message: "Erro no processamento", error: err });
