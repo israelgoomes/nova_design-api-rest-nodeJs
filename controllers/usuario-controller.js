@@ -79,9 +79,7 @@ usuarioController.prototype.autenticar = async (req, res) => {
   _validationContrat.isRequired(req.body.senha, "Informe sua senha.");
 
   if (!_validationContrat.isValid()) {
-    res
-      .status(400)
-      .send({
+    res.status(400).send({
         message: "Não foi posível efetuar o login",
         validation: _validationContrat.errors()
       });
@@ -98,9 +96,7 @@ usuarioController.prototype.autenticar = async (req, res) => {
       token: jwt.sign({ user: usuarioEncontrado }, variables.Security.secretKey)
     });
   } else {
-    res
-      .status(400)
-      .send({ message: "Usuário e senha informado são inválidos" });
+    res.status(400).send({ message: "Usuário e senha informado são inválidos" });
   }
 };
 
