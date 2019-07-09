@@ -27,14 +27,15 @@ projetoController.prototype.getById = async (req, res) => {
 projetoController.prototype.post = async (req, res) => {
   let _ValidationContract = new validation();
 
-  _ValidationContract.isRequired(req.body.nomeCliente, 'Digite o nome do cliente');
-  _ValidationContract.isRequired(req.body.telefone, 'Digite um número de telefone');
-  _ValidationContract.isRequired(req.body.rua, 'Digite a rua');
-  _ValidationContract.isRequired(req.body.bairro, 'Digite o bairro');
-  _ValidationContract.isRequired(req.body.cidade, 'Digite a cidade');
+  //_ValidationContract.isRequired(req.body.nomeCliente, 'Digite o nome do cliente');
+  //_ValidationContract.isRequired(req.body.tel, 'Digite um número de telefone');
+  //_ValidationContract.isRequired(req.body.endereco, 'Digite a rua');
+  //_ValidationContract.isRequired(req.body.bairro, 'Digite o bairro');
+  //_ValidationContract.isRequired(req.body.cidade, 'Digite a cidade');
   _ValidationContract.isRequired(req.body.tituloProjeto, 'Digite o titulo do projeto');
   _ValidationContract.isRequired(req.body.descricaoProjeto, 'Escreva uma breve descrição do projeto');
-  _ValidationContract.isRequired(req.body.cep, 'Cep Obrigatório');
+  //_ValidationContract.isRequired(req.body.cep, 'Cep Obrigatório');
+  _ValidationContract.isRequired(req.body.cliente, 'Selecione o cliente do projeto')
 
 
 
@@ -45,8 +46,8 @@ projetoController.prototype.put = async(req, res) => {
   let _ValidationContract = new validation();
 
   _ValidationContract.isRequired(req.body.nomeCliente, 'Digite o nome do cliente');
-  _ValidationContract.isRequired(req.body.relefone, 'Digite um número de telefone');
-  _ValidationContract.isRequired(req.body.rua, 'Digite a rua');
+  _ValidationContract.isRequired(req.body.tel, 'Digite um número de telefone');
+  _ValidationContract.isRequired(req.body.endereco, 'Digite a rua');
   _ValidationContract.isRequired(req.body.bairro, 'Digite o bairro');
   _ValidationContract.isRequired(req.body.cidade, 'Digite a cidade');
   _ValidationContract.isRequired(req.body.tituloProjeto, 'Digite o titulo do projeto');

@@ -11,7 +11,7 @@ class projetoDAO {
 
 
    async getAll(){ 
-       return await this._base.getAll()
+       return await this._base._model.find().populate('cliente', '_id nome email tel endereco cidade bairro cep');
    }
    
    async getById(id){ 

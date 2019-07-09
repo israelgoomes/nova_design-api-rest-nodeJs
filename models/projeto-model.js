@@ -4,20 +4,20 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const projetoModel = new schema({
-    nomeCliente: {trim: true, required: true, type: String, index: true},
-    telefone: {trim:true, requried: true, type: String},
-    email: {type: String},
-    rua: {type: String, required: true},
-    bairro: {type: String, required: true},
-    cidade: {type: String, required: true, index: true},
+    //nomeCliente: {trim: true, required: true, type: String, index: true},
+    //tel: {trim:true, requried: true, type: String},
+    //email: {type: String},
+    //endereco: {type: String, required: true},
+    //bairro: {type: String, required: true},
+    //cidade: {type: String, required: true, index: true},
     tituloProjeto: {trim: true, required: true, index: true, type: String },
     descricaoProjeto: {type: String, required: true},
-    cep: {type: String, required: true},
+    //cep: {type: String, required: true},
     preco: {type: String},
     foto: {type: Array},
-    foto2: {type: String},
     status: {type: Boolean, default: true},
-    data: {type: Date, default: new Date()}
+    data: {type: Date, default: new Date()},
+    cliente: {type: schema.Types.ObjectId, ref: 'Clientes'}
 
 }, {versionkey: false})
 
