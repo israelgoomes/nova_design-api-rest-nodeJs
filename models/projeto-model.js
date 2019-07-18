@@ -25,9 +25,9 @@ projetoModel.pre('save', next =>{
     let agora = new Date();
     if(!this.data){
         this.data = agora;
-
-        next();
     }
+        next();
+    
 })
 
 module.exports = mongoose.model('Projetos', projetoModel);

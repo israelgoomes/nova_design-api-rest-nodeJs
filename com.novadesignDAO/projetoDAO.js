@@ -19,6 +19,10 @@ class projetoDAO {
 
    }
 
+   async getByClienteId(id){
+       return await this._base._model.find({ cliente: id});
+   }
+
    async create(data){ 
       return await this._base.create(data);
     }
