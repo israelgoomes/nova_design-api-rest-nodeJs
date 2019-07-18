@@ -1,6 +1,6 @@
 {
   "name": "novadesign_api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Api-rest aplicativo nova design",
   "main": "index.js",
   "scripts": {
