@@ -17,7 +17,8 @@ usuarioModel.pre('save', next =>{
     let agora = new Date();
 if(!this.dataCriacao){
     this.dataCriacao = agora;
-    next();
 }
+    next();
+
 })
 module.exports = mongoose.model('Usuario', usuarioModel);

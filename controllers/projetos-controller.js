@@ -24,6 +24,21 @@ projetoController.prototype.getById = async (req, res) => {
  ctrlBase.getById(_repo, req, res);
 };
 
+projetoController.prototype.getByClienteId = async (req, res)=> {
+  try {
+    let id = req.params.id;
+    if (id) {
+      let resultado = await _repo.getByClienteId(id);
+      res.status(200).send(resultado);
+    }else {
+      res.status(400).send({ message: 'Informe o id do projeto', validation: {} });
+    }
+  } catch (err) {
+    console.log("Get por ID com erro, motivo: ", err);
+    res.status(500).send({ message: "Erro no processamento Aqui!!!!!!", error: err });
+  }
+}
+
 projetoController.prototype.post = async (req, res) => {
   let _ValidationContract = new validation();
 
