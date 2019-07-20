@@ -17,7 +17,8 @@ const projetoModel = new schema({
     foto: {type: Array},
     status: {type: Boolean, default: true},
     data: {type: Date, default: new Date()},
-    cliente: {type: schema.Types.ObjectId, ref: 'Clientes'}
+    usuario: {type: schema.Types.ObjectId, ref: 'Usuario'},
+    cliente: {type: schema.Types.ObjectId, ref: 'Cliente'}
 
 }, {versionkey: false})
 

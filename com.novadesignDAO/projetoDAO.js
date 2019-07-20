@@ -11,7 +11,7 @@ class projetoDAO {
 
 
    async getAll(){ 
-       return await this._base._model.find().populate('cliente', '_id nome email tel endereco cidade bairro cep');
+       return await this._base._model.find().populate('usuario', '_id nome email');
    }
    
    async getById(id){ 
@@ -19,10 +19,13 @@ class projetoDAO {
 
    }
 
-   async getByClienteId(id){
-       return await this._base._model.find({ cliente: id});
-   }
+   async getByUserId(id){
+    return await this._base._model.find({ usuario: id});
+}
 
+async getByClienteId(id){
+    return await this._base._model.find({ cliente: id});
+}
    async create(data){ 
       return await this._base.create(data);
     }

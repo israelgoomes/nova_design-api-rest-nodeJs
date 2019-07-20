@@ -16,6 +16,21 @@ clienteController.prototype.getById = async (req, res) => {
     ctrlBase.getById(_repo, req, res);
 }
 
+clienteController.prototype.getByUserId = async (req, res)=> {
+    try {
+      let id = req.params.id;
+      if (id) {
+        let resultado = await _repo.getByUserId(id);
+        res.status(200).send(resultado);
+      }else {
+        res.status(400).send({ message: 'Informe o id do Usuario', validation: {} });
+      }
+    } catch (err) {
+      console.log("Get por ID com erro, motivo: ", err);
+      res.status(500).send({ message: "Erro no processamento (User)", error: err });
+    }
+  }
+
 clienteController.prototype.post = async(req, res) =>{
     let _validationContract = new validation();
     _validationContract.isRequired(req.body.nome, 'Digite o nome do cliente');
@@ -27,6 +42,8 @@ clienteController.prototype.post = async(req, res) =>{
     _validationContract.isRequired(req.body.bairro, 'Digite o bairro');
     _validationContract.isRequired(req.body.cidade, 'Digite a Cidade');
     _validationContract.isRequired(req.body.estado, 'Digite o Estado');
+    _validationContract.isRequired(req.body.usuario, 'Informe o usuário');
+
 
     ctrlBase.post(_repo, _validationContract, req, res);
 }
@@ -43,6 +60,7 @@ clienteController.prototype.put = async(req, res) => {
     _validationContract.isRequired(req.body.bairro, 'Digite o bairro');
     _validationContract.isRequired(req.body.cidade, 'Digite a Cidade');
     _validationContract.isRequired(req.body.estado, 'Digite o Estado');
+    _validationContract.isRequired(req.body.usuario, 'Informe o usuário');
 
     ctrlBase.put(_repo, _validationContract, req, res);
 }

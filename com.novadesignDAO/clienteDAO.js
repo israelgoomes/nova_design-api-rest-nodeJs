@@ -9,9 +9,14 @@ class clienteDAO {
         this._base = new base('Clientes');
     }
 
-async getAll(){
-    return await this._base.getAll();
-}
+
+    async getAll(){ 
+        return await this._base._model.find().populate('usuario', '_id nome email foto');
+    }
+    async getByUserId(id){
+        return await this._base._model.find({ usuario: id});
+    }
+  
 
 async getById(id){
     return await this._base.getById(id);

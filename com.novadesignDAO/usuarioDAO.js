@@ -7,7 +7,7 @@ const md5 = require("md5");
 class usuarioDao {
   constructor() {
     this._base = new base("Usuario");
-    this._projection = "nome email _id";
+    this._projection = "nome email _id" ;
   }
 
   //verifica se o email informado já existe
@@ -17,13 +17,13 @@ class usuarioDao {
   //faz a autenticação do login
   async authenticate(Email, Senha) {
     let _hashSenha = md5(Senha);
-    return await this._base._model.findOne({email: Email, senha: _hashSenha},this._projection);
+    return await this._base._model.findOne({email: Email, senha: _hashSenha}, "nome email _id");
   }
 
 
   //-------  C R U D -----------------------------------
   async getAll() {
-    return await this._base._model.find({}, this._projection);
+    return await this._base._model.find({}, "nome email _id foto");
   }
 
   async getById(id) {

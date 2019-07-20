@@ -12,8 +12,8 @@ const clienteModel = new schema ({
     bairro: {type: String, required: true},
     cidade: {type: String, required: true},
     estado: {type: String, required: true},
-    dataCriacao: {type: Date, default: new Date()}
-
+    dataCriacao: {type: Date, default: new Date()},
+    usuario: {type: schema.Types.ObjectId, ref: 'Usuario'}
 
 }, {versionKey: false})
 

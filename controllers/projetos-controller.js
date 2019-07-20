@@ -35,7 +35,22 @@ projetoController.prototype.getByClienteId = async (req, res)=> {
     }
   } catch (err) {
     console.log("Get por ID com erro, motivo: ", err);
-    res.status(500).send({ message: "Erro no processamento Aqui!!!!!!", error: err });
+    res.status(500).send({ message: "Erro no processamento", error: err });
+  }
+}
+
+projetoController.prototype.getByUserId = async (req, res)=> {
+  try {
+    let id = req.params.id;
+    if (id) {
+      let resultado = await _repo.getByUserId(id);
+      res.status(200).send(resultado);
+    }else {
+      res.status(400).send({ message: 'Informe o id do Usuario', validation: {} });
+    }
+  } catch (err) {
+    console.log("Get por ID com erro, motivo: ", err);
+    res.status(500).send({ message: "Erro no processamento (User)", error: err });
   }
 }
 
@@ -50,7 +65,9 @@ projetoController.prototype.post = async (req, res) => {
   _ValidationContract.isRequired(req.body.tituloProjeto, 'Digite o titulo do projeto');
   _ValidationContract.isRequired(req.body.descricaoProjeto, 'Escreva uma breve descrição do projeto');
   //_ValidationContract.isRequired(req.body.cep, 'Cep Obrigatório');
-  _ValidationContract.isRequired(req.body.cliente, 'Selecione o cliente do projeto')
+  _ValidationContract.isRequired(req.body.usuario, 'Selecione o Usuario do projeto');
+  _ValidationContract.isRequired(req.body.cliente, 'Selecione o cliente do projeto');
+
 
 
 
