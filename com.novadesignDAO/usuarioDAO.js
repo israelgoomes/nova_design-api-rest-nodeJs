@@ -27,7 +27,7 @@ class usuarioDao {
   }
 
   async getById(id) {
-    return await this._base._model.findById(id, "nome email _id foto");
+    return await this._base._model.findById(id, "nome email _id foto dataCriacao");
   }
 
   async create(data) {
