@@ -40,8 +40,14 @@ usuarioController.prototype.post = async (req, res) => {
       `Já existe o e-mail ${req.body.email} na nossa base da dados`
     );
   }
+  
+  if(req.body.senha){
   req.body.senha = md5(req.body.senha);
   ctrlBase.post(_repo, _validationContract, req, res);
+  }else{
+    res.status(400).send({ message: "Preencha todos os dados" });
+
+  }
 };
 
 usuarioController.prototype.put = async (req, res) => {
@@ -96,7 +102,7 @@ usuarioController.prototype.autenticar = async (req, res) => {
       token: jwt.sign({ user: usuarioEncontrado }, variables.Security.secretKey)
     });
   } else {
-    res.status(400).send({ message: "Usuário e senha informado são inválidos" });
+    res.status(400).send({ message: "Email ou senha incorreta!" });
   }
 };
 

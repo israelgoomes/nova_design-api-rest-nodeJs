@@ -18,7 +18,7 @@ const projetoModel = new schema({
     status: {type: Boolean, default: true},
     data: {type: Date, default: new Date()},
     usuario: {type: schema.Types.ObjectId, ref: 'Usuario'},
-    cliente: {type: schema.Types.ObjectId, ref: 'Cliente'}
+    cliente: {type: schema.Types.ObjectId, ref: 'Clientes'}
 
 }, {versionkey: false})
 
