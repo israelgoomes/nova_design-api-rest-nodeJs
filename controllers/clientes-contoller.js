@@ -8,6 +8,11 @@ const validation = require('../bin/helpers/validation');
 
 function clienteController(){ }
 
+
+clienteController.prototype.sendEmail = async(req, res) => {
+    ctrlBase.sendEmail();
+}
+
 clienteController.prototype.get = async (req, res) =>{
 ctrlBase.getAll(_repo, req, res);
 }
@@ -29,8 +34,7 @@ clienteController.prototype.getByUserId = async (req, res)=> {
       console.log("Get por ID com erro, motivo: ", err);
       res.status(500).send({ message: "Erro no processamento (User)", error: err });
     }
-  }
-
+  }  
 clienteController.prototype.post = async(req, res) =>{
     let _validationContract = new validation();
     _validationContract.isRequired(req.body.nome, 'Digite o nome do cliente');
@@ -64,6 +68,7 @@ clienteController.prototype.put = async(req, res) => {
 
     ctrlBase.put(_repo, _validationContract, req, res);
 }
+
 
 clienteController.prototype.delete = async (req, res) => {
         ctrlBase.delete(_repo, req, res);

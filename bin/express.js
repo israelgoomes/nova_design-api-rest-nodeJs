@@ -4,33 +4,18 @@ const variables = require('../bin/configurations/variables');
 const projetosRouter = require("../routes/projeto-routes");
 const usuarioRouter = require('../routes/usuario-routes');
 const clienteRouter = require('../routes/cliente-routes');
+const emailRouter = require('../routes/emailRoute');
 const mongoose = require("mongoose");
 const cors = require('cors');
 const app = express();
-/*
-app.get('*', (req, res, next) => {
-  
-  if (req.headers['x-forwarded-proto'] != 'https') {
-      
-// checa se o header é HTTP ou HTTPS
 
-      res.redirect("https://" + req.headers.host + req.url);
-      
-// faz o redirect para HTTPS
-
-  } else {
-      next();
-      
-// segue com a sequência das rotas
-
-  }
-});*/
 const allowedOrigins = [
     
   'ionic://localhost',
   'http://localhost',
   'http://localhost:8080',
-  'http://localhost:8100'
+  'http://localhost:8100',
+  'http://localhost:4200'
 
   ];
 
@@ -61,6 +46,8 @@ app.use(cors());
 app.use("/api/projetos", projetosRouter);
 app.use("/api/usuario", usuarioRouter);
 app.use("/api/clientes", clienteRouter);
+app.use("/api/send-email", emailRouter)
+
 
 module.exports = app;
 

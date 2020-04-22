@@ -1,6 +1,36 @@
 "use strict";
 
 //-----------------------RN ----------------------
+
+
+exports.senEmail = async(email, texto) =>{
+  const nodemailer = require("nodemailer");
+  let transporter = nodemailer.createTransport({
+    host: "smtp-mail.outlook.com",
+    port: 25,
+    secure: false,
+    auth:{
+        user: "rael_goomes@hotmail.com",
+        pass: "gordinho157"
+    }
+});
+
+transporter.sendMail({
+    from: "Israel Gomes <rael_goomes@hotmail.com>",
+    to: "rael_goomes@hotmail.com",
+    subject: "Teste do nodemailer",
+    text: "Teste nodemailer texto",
+    html: "Teste pelo <a href='https://www.google.com.br'>HTMLM</a>"
+}).then(message=>{
+    console.log(message)
+}).catch(error =>{
+    console.log(error)
+})
+
+
+}
+
+
 exports.getAll = async (repository, req, res) => {
   try {
     let resultado = await repository.getAll();
@@ -76,3 +106,4 @@ exports.delete = async (repository, req, res) => {
     res.status(400).send({ message: "Erro no processamento", error: err });
   }
 };
+

@@ -16,7 +16,7 @@ class usuarioDao {
   }
   //faz a autenticação do login
   async authenticate(Email, Senha) {
-    let _hashSenha = md5(Senha);
+    let _hashSenha = (Senha);
     return await this._base._model.findOne({email: Email, senha: _hashSenha}, "nome email _id");
   }
 
@@ -36,11 +36,13 @@ class usuarioDao {
   }
 
   async update(id, data) {
+    console.log('dados antes', data)
     let usuarioAtualizado = await this._base.update(id, {
       nome: data.nome,
       email: data.email,
       foto: data.foto
     });
+    //console.log('User atualizado', usuarioAtualizado)
     return this._base._model.findById(usuarioAtualizado._id, this._projection);
   }
 

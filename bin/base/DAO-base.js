@@ -22,8 +22,11 @@ class daoBase {
   }
 
   async update(id, data) {
+    console.log('ID USER', id)
+    console.log('Dados', data)
     await this._model.findByIdAndUpdate(id, { $set: data });
     let resultado = await this._model.findById(id);
+    return resultado;
   }
 
   async delete(id) {

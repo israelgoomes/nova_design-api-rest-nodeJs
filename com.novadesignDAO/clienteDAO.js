@@ -11,7 +11,7 @@ class clienteDAO {
 
 
     async getAll(){ 
-        return await this._base._model.find().populate('usuario', '_id nome email foto');
+        return await this._base._model.find().populate('usuario', '_id nome email');
     }
     async getByUserId(id){
         return await this._base._model.find({ usuario: id});

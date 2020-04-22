@@ -42,7 +42,7 @@ usuarioController.prototype.post = async (req, res) => {
   }
   
   if(req.body.senha){
-  req.body.senha = md5(req.body.senha);
+  req.body.senha = (req.body.senha);
   ctrlBase.post(_repo, _validationContract, req, res);
   }else{
     res.status(400).send({ message: "Preencha todos os dados" });
